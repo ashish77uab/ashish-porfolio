@@ -84,6 +84,7 @@ const HomeHeader = () => {
                                     'React Js Developer',
                                     2000,
                                     'Designer',
+                                    2000
 
                                 ]}
                                 wrapper="span"
