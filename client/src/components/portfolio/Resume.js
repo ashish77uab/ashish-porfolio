@@ -12,7 +12,7 @@ const studiesArray = [
 
     },
     {
-        role: 'College',
+        role: 'BTech in Computer Science',
         schooling: 'University insititute of Technology RGPV',
         year: '2017-2021',
         address: 'Bhopal, Madhya Pradesh',
