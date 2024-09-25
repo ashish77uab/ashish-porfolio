@@ -39,7 +39,7 @@
     @apply [&_svg]:!w-7 !important;
   }
   body {
-    @apply font-gabrito bg-zinc-100;
+    @apply font-gabrito bg-zinc-100 dark:bg-black text-black dark:text-white;
   }
   tbody {
     display: block;
@@ -86,6 +86,9 @@
   .ay-center {
     @apply absolute top-1/2 -translate-y-1/2;
   }
+  .ax-center {
+    @apply absolute top-1/2 -translate-x-1/2;
+  }
   .a-center {
     @apply absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2;
   }
@@ -114,7 +117,7 @@
     @apply text-sm px-6 font-medium py-2;
   }
   .text-muted {
-    @apply text-black opacity-70 text-base;
+    @apply text-black dark:text-white opacity-70 text-base;
   }
   .action-btn {
     @apply w-10 h-10 cursor-pointer rounded-full text-xl text-primary-blue bg-zinc-200 hover:bg-zinc-300  flex-center;
@@ -146,5 +149,8 @@
   }
   .border-c {
     @apply border border-zinc-300;
+  }
+  .section-wrapper{
+    @apply  py-10 md:py-16 ;
   }
 }
