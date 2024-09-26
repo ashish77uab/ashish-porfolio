@@ -95,6 +95,7 @@ const HomeHeader = () => {
         });
 
     }, []);
+   
     return (
         <div style={{ backgroundImage: "url('/images/ashishbg.jpg')" }} className='h-screen bg-no-repeat bg-cover bg-center relative overflow-hidden '>
             <div className='bg-gradient-to-br  from-black/20 to-black/60 dark:from-black/50 dark:to-black/50 h-screen w-full absolute inset-0 flex flex-col justify-center  '>
@@ -124,16 +125,17 @@ const HomeHeader = () => {
                             {Array(4).fill('1').map((item, index) => (
                                 <div
                                     key={index}
-                                    className='lg:h-[2px] h-[1.5px] lg:w-44 flex-1 lg:flex-none bg-white/10 dark:bg-gray-800 rounded-full mb-2'
+                                    className='lg:h-[2px] h-[1.5px] lg:w-44 flex-1 lg:flex-none bg-white/10 rounded-full mb-2'
                                 >
                                     <div
                                         ref={(el) => (fillBoxesRef.current[index] = el)} // Assign ref to each fill-box
-                                        className='w-full h-full bg-white'
+                                        className='w-full h-full bg-cyan-500 dark:bg-yellow-500'
                                         style={{ transformOrigin: 'left', scaleX: 0 }} // Initial scaleX 0
                                     ></div>
                                 </div>
                             ))}
                         </div>
+                       
                     </div>
                 </div>
 
@@ -147,6 +149,7 @@ const HomeHeader = () => {
                     )
                 })}
             </div>
+           
 
         </div>
     )

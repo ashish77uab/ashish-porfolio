@@ -1,53 +1,90 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import Heading from './Heading'
 import moment from 'moment'
 import { reactIcons } from '../../utils/icons'
+import gsap from 'gsap'
 
+const aboutArray = [
+    {
+        title: 'Birthday',
+        description: '14 June, 1998'
+
+    },
+    {
+        title: 'Age',
+        description: `${moment().diff(moment('14-06-1998', 'DD-MM-YYYY'), 'years', true).toFixed(0) } Years`
+
+    },
+    {
+        title: 'Phone Number',
+        description: '7509650490'
+
+    },
+    {
+        title: 'Email',
+        description: 'ashish77uab@gmail.com'
+
+    },
+    {
+        title: 'Degree',
+        description: 'BTech in CS'
+
+    },
+    {
+        title: 'University',
+        description: 'UIT, RGPV Bhopal'
+
+    },
+    {
+        title: 'City',
+        description: 'Indore'
+
+    }
+]
 
 const About = () => {
-    const aboutArray = [
-        {
-            title: 'Birthday',
-            description: '14 June, 1998'
-
-        },
-        {
-            title: 'Age',
-            description: `${moment().diff(moment('14-06-1998', 'DD-MM-YYYY'), 'years', true).toFixed(0) } Years`
-
-        },
-        {
-            title: 'Phone Number',
-            description: '7509650490'
-
-        },
-        {
-            title: 'Email',
-            description: 'ashish77uab@gmail.com'
-
-        },
-        {
-            title: 'Degree',
-            description: 'BTech in CS'
-
-        },
-        {
-            title: 'University',
-            description: 'UIT, RGPV Bhopal'
-
-        },
-        {
-            title: 'City',
-            description: 'Indore'
-
-        }
-    ]
     const startDate = moment('10-01-2022', 'DD-MM-YYYY');
     const currentDate = moment();
     const yearsOfExperience = currentDate.diff(startDate, 'years', true); 
 
+    const boxesRef = useRef([]);
+    const containerRef = useRef(null);
+
+    useEffect(() => {
+        const container = containerRef.current;
+        const boxes = boxesRef.current;
+        const containerWidth = container.clientWidth;
+        const containerHeight = container.clientHeight;
+
+        
+
+        // Function to get random positions within the container
+        const getRandomPosition = () => {
+            return {
+                x: Math.random() * (containerWidth - 96), // Random x within the container width (subtracting box width)
+                y: Math.random() * (containerHeight - 96), // Random y within the container height (subtracting box height)
+            };
+        };
+
+        // Function to animate a box to a new random position
+        const moveBox = (box) => {
+            gsap.to(box, {
+                ...getRandomPosition(),
+                duration: 2 + Math.random() * 3, // Random duration between 2 and 5 seconds
+                ease: 'power1.inOut', // Smooth animation
+                onComplete: () => {
+                    moveBox(box); // Call moveBox again for continuous movement
+                },
+            });
+        };
+
+        // Start the animation for each box
+        boxes.forEach((box) => {
+            moveBox(box);
+        });
+    }, []);
     return (
-        <div className='section-wrapper'>
+        <div className='section-wrapper relative overflow-hidden'>
             <header>
                 <Heading title={'About'}/>
                 <p className='mt-4 text-muted lg:text-lg'>
@@ -81,6 +118,18 @@ const About = () => {
                         </p>
                     </div>
                 </div>
+            </div>
+            <div
+                ref={containerRef}
+                className=' grid grid-cols-3 gap-2  absolute inset-0 z-[-1]'
+            >
+                {Array(9).fill('1').map((item, index) => (
+                    <div
+                        key={index}
+                        ref={(el) => (boxesRef.current[index] = el)} // Assign ref to each box
+                        className='absolute w-16 h-16 box-view bg-white dark:bg-neutral-800 shadow-lg  rounded-sm'
+                    ></div>
+                ))}
             </div>
         </div>
     )
