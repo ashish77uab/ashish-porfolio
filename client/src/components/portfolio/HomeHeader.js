@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react'
+import React, { useEffect, useLayoutEffect, useRef } from 'react'
 import { TypeAnimation } from 'react-type-animation';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -69,6 +69,32 @@ const HomeHeader = () => {
                 duration: 2,
             })
     }, [])
+    const fillBoxesRef = useRef([]);
+
+    useEffect(() => {
+        // Create a GSAP timeline with infinite looping
+        const tl = gsap.timeline({ repeat: -1 });
+
+        // Loop through each fill-box and add an animation with delay to the timeline
+        fillBoxesRef.current.forEach((box, index) => {
+            tl.fromTo(
+                box,
+                { scaleX: 0 },
+                {
+                    scaleX: 1,
+                    duration: 3,
+                    // 0.2 seconds delay before each box starts animating
+                    ease: 'power2.out',
+                    transformOrigin: 'left',
+                    onComplete: () => {
+                        // Reset scaleX to 0 after animation completes
+                        gsap.set(box, { scaleX: 0 });
+                    },
+                }
+            );
+        });
+
+    }, []);
     return (
         <div style={{ backgroundImage: "url('/images/ashishbg.jpg')" }} className='h-screen bg-no-repeat bg-cover bg-center relative overflow-hidden '>
             <div className='bg-gradient-to-br  from-black/20 to-black/60 dark:from-black/50 dark:to-black/50 h-screen w-full absolute inset-0 flex flex-col justify-center  '>
@@ -93,6 +119,20 @@ const HomeHeader = () => {
                                 className='!text-white text-3xl tracking-wide'
                             />
 
+                        </div>
+                        <div className='flex items-end gap-[1px] my-2'>
+                            {Array(4).fill('1').map((item, index) => (
+                                <div
+                                    key={index}
+                                    className='lg:h-[2px] h-[1.5px] lg:w-44 flex-1 lg:flex-none bg-white/10 dark:bg-gray-800 rounded-full mb-2'
+                                >
+                                    <div
+                                        ref={(el) => (fillBoxesRef.current[index] = el)} // Assign ref to each fill-box
+                                        className='w-full h-full bg-white'
+                                        style={{ transformOrigin: 'left', scaleX: 0 }} // Initial scaleX 0
+                                    ></div>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>
