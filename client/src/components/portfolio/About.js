@@ -98,7 +98,7 @@ const About = () => {
                 </div>
                 <div className='flex-grow'>
                     <div>
-                        <h4 className='md:heading-4 heading-6'>Web Designer & Full Stack Developer</h4>
+                        <h4 className='md:heading-4 heading-6'>Full Stack Developer</h4>
                     </div>
                     <div className='py-8'>
                         <ul className='grid grid-cols-1 lg:grid-cols-2 gap-2'>

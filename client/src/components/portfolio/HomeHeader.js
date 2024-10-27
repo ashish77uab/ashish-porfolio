@@ -110,7 +110,7 @@ const HomeHeader = () => {
                                     1000,
                                     'React Js Developer',
                                     2000,
-                                    'Designer',
+                                    'Web Designer',
                                     2000
 
                                 ]}

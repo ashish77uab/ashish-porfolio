@@ -6,14 +6,14 @@ gsap.registerPlugin(ScrollTrigger)
 const studiesArray = [
     {
         role: 'Secondary Education',
-        schooling: 'Central Academy Scool',
+        schooling: 'Central Academy School',
         year: '2014-2016',
         address: 'Rewa, Madhya Pradesh',
 
     },
     {
         role: 'BTech in Computer Science',
-        schooling: 'University insititute of Technology RGPV',
+        schooling: 'University institute of Technology RGPV',
         year: '2017-2021',
         address: 'Bhopal, Madhya Pradesh',
 
