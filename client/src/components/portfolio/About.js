@@ -3,6 +3,7 @@ import Heading from './Heading'
 import moment from 'moment'
 import { reactIcons } from '../../utils/icons'
 import gsap from 'gsap'
+const dob = moment().diff(moment('14-06-1998', 'DD-MM-YYYY'), 'month', true) / 12
 
 const aboutArray = [
     {
@@ -12,7 +13,7 @@ const aboutArray = [
     },
     {
         title: 'Age',
-        description: `${moment().diff(moment('14-06-1998', 'DD-MM-YYYY'), 'years', true).toFixed(0) } Years`
+        description: `${String(dob)?.split('.')[0]} Years`
 
     },
     {
@@ -45,7 +46,7 @@ const aboutArray = [
 const About = () => {
     const startDate = moment('10-01-2022', 'DD-MM-YYYY');
     const currentDate = moment();
-    const yearsOfExperience = currentDate.diff(startDate, 'years', true); 
+    const yearsOfExperience = currentDate.diff(startDate, 'years', true);
 
     const boxesRef = useRef([]);
     const containerRef = useRef(null);
@@ -56,7 +57,7 @@ const About = () => {
         const containerWidth = container.clientWidth;
         const containerHeight = container.clientHeight;
 
-        
+
 
         // Function to get random positions within the container
         const getRandomPosition = () => {
@@ -86,7 +87,7 @@ const About = () => {
     return (
         <div className='section-wrapper relative overflow-hidden'>
             <header>
-                <Heading title={'About'}/>
+                <Heading title={'About'} />
                 <p className='mt-4 text-muted lg:text-lg'>
                     Hi, I’m Ashish Patel, a passionate React.js developer with <b>{yearsOfExperience.toFixed(1)}  years</b> of experience building dynamic and responsive web applications. I specialize in creating seamless user interfaces using React’s component-based architecture. My expertise includes integrating APIs, managing state with Redux, and optimizing performance for scalable applications. I love solving complex problems and continuously improving my skills in modern JavaScript frameworks. Looking forward to collaborating on innovative projects!
                 </p>
@@ -102,7 +103,7 @@ const About = () => {
                     </div>
                     <div className='py-8'>
                         <ul className='grid grid-cols-1 lg:grid-cols-2 gap-2'>
-                            {aboutArray?.map((item)=>{
+                            {aboutArray?.map((item) => {
                                 return <li key={item.title} className='flex items-center gap-2 py-1'>
                                     <div className='text-base tracking-wider min-w-[150px] font-medium flex items-center'><span className='mr-2 dark:text-yellow-500 text-cyan-500 text-[18px]'>{reactIcons.arrowright}</span> {item.title}  :</div>
                                     <div className='flex-grow text-muted'>{item.description}</div>
