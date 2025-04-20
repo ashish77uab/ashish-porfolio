@@ -95,7 +95,7 @@ const About = () => {
             </header>
             <div className="flex lg:flex-row flex-col items-start gap-8 py-8">
                 <div className='lg:w-[400px] md:w-[600px] w-full flex-shrink-0'>
-                    <img className='w-full max-h-[700px] lg:max-h-[600px] object-contain' src="/images/profile.jpg" alt="" />
+                    <img className='w-full max-h-[700px] lg:max-h-[600px] object-contain' src="/images/ashish-white.jpg" alt="" />
                 </div>
                 <div className='flex-grow'>
                     <div>

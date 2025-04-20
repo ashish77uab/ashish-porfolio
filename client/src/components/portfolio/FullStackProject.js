@@ -48,11 +48,12 @@ const FullStackProject = () => {
                                     className='h-[240px] overflow-hidden relative'
                                     title='Click to view full image'
                                 >
+
                                     <a href={item?.image} target="_blank" rel="noopener noreferrer">
                                         <img
                                             src={item?.image}
                                             alt={item?.name}
-                                            className='w-full block'
+                                            className='w-full block '
                                         />
                                     </a>
                                 </div>

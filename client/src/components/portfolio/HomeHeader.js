@@ -95,10 +95,10 @@ const HomeHeader = () => {
         });
 
     }, []);
-   
+
     return (
-        <div style={{ backgroundImage: "url('/images/ashishbg.jpg')" }} className='h-screen bg-no-repeat bg-cover bg-center relative overflow-hidden '>
-            <div className='bg-gradient-to-br  from-black/20 to-black/60 dark:from-black/50 dark:to-black/50 h-screen w-full absolute inset-0 flex flex-col justify-center  '>
+        <div style={{ backgroundImage: "url('/images/react-bg.jpg')" }} className='h-screen bg-no-repeat bg-cover bg-center relative overflow-hidden '>
+            <div className='bg-gradient-to-br  from-black/60 to-black/80 dark:from-black/50 dark:to-black/50 h-screen w-full absolute inset-0 flex flex-col justify-center  '>
                 <div className='section-wrapper container'>
                     <div className='overflow-hidden'>
                         <h4 className='md:text-7xl text-5xl  font-bold text-white dark:text-white name'>Ashish Patel</h4>
@@ -135,7 +135,7 @@ const HomeHeader = () => {
                                 </div>
                             ))}
                         </div>
-                       
+
                     </div>
                 </div>
 
@@ -149,7 +149,7 @@ const HomeHeader = () => {
                     )
                 })}
             </div>
-           
+
 
         </div>
     )
