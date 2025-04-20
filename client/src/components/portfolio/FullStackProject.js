@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
 import Heading from './Heading';
 import gsap from 'gsap';
 
@@ -13,37 +13,50 @@ const FullStackProject = () => {
     const containerRefs = useRef([]);
     const tweenRefs = useRef([]);
 
-    const startImageScroll = () => {
-        tweenRefs.current.forEach((tween) => tween?.kill()); // Kill old animations
+    const animateImages = () => {
+        // Kill previous animations
+        tweenRefs.current.forEach((tween) => tween?.kill());
 
         tweenRefs.current = containerRefs.current.map((container) => {
             if (!container) return null;
 
-            const image = container.querySelector('img');
-            if (!image) return null;
+            const img = container.querySelector('img');
+            if (!img) return null;
 
-            const distance = image.scrollHeight - container.clientHeight;
+            const startAnimation = () => {
+                const distance = img.scrollHeight - container.clientHeight;
 
-            if (distance > 0) {
-                return gsap.to(image, {
-                    y: -distance,
-                    ease: 'none',
-                    repeat: -1,
-                    duration: 10,
-                });
+                if (distance > 0) {
+                    return gsap.to(img, {
+                        y: -distance,
+                        ease: 'none',
+                        repeat: -1,
+                        duration: 10,
+                    });
+                } else {
+                    gsap.set(img, { y: 0 });
+                    return null;
+                }
+            };
+
+            // If image is loaded, animate immediately
+            if (img.complete) {
+                return startAnimation();
             } else {
-                gsap.set(image, { y: 0 }); // Reset position if no scroll needed
+                // Otherwise, wait for it to load
+                img.onload = () => startAnimation();
                 return null;
             }
         });
     };
 
-    useEffect(() => {
-        startImageScroll();
+    useLayoutEffect(() => {
+        animateImages();
 
-        window.addEventListener('resize', startImageScroll);
+        window.addEventListener('resize', animateImages);
+
         return () => {
-            window.removeEventListener('resize', startImageScroll);
+            window.removeEventListener('resize', animateImages);
             tweenRefs.current.forEach((tween) => tween?.kill());
         };
     }, []);
