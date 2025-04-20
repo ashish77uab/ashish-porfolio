@@ -4,32 +4,48 @@ import gsap from 'gsap';
 
 const FullStackProject = () => {
     const projectsArr = [
-        { name: 'Ecommerce App', image: '/images/projects/ecommerce.png', description: '', link: 'https://ashish-ecom-47.netlify.app' },
-        { name: 'Algotrons', image: '/images/projects/algotrons.png', description: '', link: 'https://algotrons-clone.netlify.app' },
-        { name: 'Dream 11', image: '/images/projects/dream-11.png', description: '', link: 'https://dream-11-clone.netlify.app' },
-        { name: 'Sarkari Test', image: '/images/projects/sarkari-test.png', description: '', link: 'https://sarkari-test.netlify.app' },
+        { name: 'Ecommerce App', image: '/images/projects/ecommerce.png', link: 'https://ashish-ecom-47.netlify.app' },
+        { name: 'Algotrons', image: '/images/projects/algotrons.png', link: 'https://algotrons-clone.netlify.app' },
+        { name: 'Dream 11', image: '/images/projects/dream-11.png', link: 'https://dream-11-clone.netlify.app' },
+        { name: 'Sarkari Test', image: '/images/projects/sarkari-test.png', link: 'https://sarkari-test.netlify.app' },
     ];
 
     const containerRefs = useRef([]);
+    const tweenRefs = useRef([]);
 
-    useEffect(() => {
-        containerRefs.current.forEach((container) => {
+    const startImageScroll = () => {
+        tweenRefs.current.forEach((tween) => tween?.kill()); // Kill old animations
+
+        tweenRefs.current = containerRefs.current.map((container) => {
+            if (!container) return null;
+
             const image = container.querySelector('img');
-
-            if (!image) return;
+            if (!image) return null;
 
             const distance = image.scrollHeight - container.clientHeight;
 
-            gsap.to(image, {
-                y: -distance,
-                ease: 'none',
-                repeat: -1,
-                duration: 10, // you can adjust duration for speed
-                yoyo: false,
-            });
+            if (distance > 0) {
+                return gsap.to(image, {
+                    y: -distance,
+                    ease: 'none',
+                    repeat: -1,
+                    duration: 10,
+                });
+            } else {
+                gsap.set(image, { y: 0 }); // Reset position if no scroll needed
+                return null;
+            }
         });
+    };
 
-        return () => gsap.killTweensOf('img');
+    useEffect(() => {
+        startImageScroll();
+
+        window.addEventListener('resize', startImageScroll);
+        return () => {
+            window.removeEventListener('resize', startImageScroll);
+            tweenRefs.current.forEach((tween) => tween?.kill());
+        };
     }, []);
 
     return (
@@ -48,12 +64,11 @@ const FullStackProject = () => {
                                     className='h-[240px] overflow-hidden relative'
                                     title='Click to view full image'
                                 >
-
                                     <a href={item?.image} target="_blank" rel="noopener noreferrer">
                                         <img
                                             src={item?.image}
                                             alt={item?.name}
-                                            className='w-full block '
+                                            className='w-full block'
                                         />
                                     </a>
                                 </div>
