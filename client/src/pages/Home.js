@@ -7,7 +7,7 @@ import ThemeToggle from "../components/portfolio/ThemeToggle";
 import FullStackProject from "../components/portfolio/FullStackProject";
 const Home = () => {
   return (
-    <section className=" h-screen min-h-[600px] relative  ">
+    <section className="  relative overflow-x-hidden  ">
       <ThemeToggle />
       <HomeHeader />
       <div className="container">

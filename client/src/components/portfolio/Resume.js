@@ -1,242 +1,268 @@
-import React, { useLayoutEffect } from 'react'
-import Heading from './Heading'
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-gsap.registerPlugin(ScrollTrigger)
-const studiesArray = [
-    {
-        role: 'Secondary Education',
-        schooling: 'Central Academy School',
-        year: '2014-2016',
-        address: 'Rewa, Madhya Pradesh',
+import React, { useLayoutEffect } from "react";
+import Heading from "./Heading";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-    },
-    {
-        role: 'BTech in Computer Science',
-        schooling: 'University institute of Technology RGPV',
-        year: '2017-2021',
-        address: 'Bhopal, Madhya Pradesh',
-
-    },
-
-]
+gsap.registerPlugin(ScrollTrigger);
 
 const experienceArray = [
     {
-        role: 'ReactJs Developer and Web Designer',
-        company: 'Codes for tomorrow',
-        year: '2022-2024',
-        address: 'Beena Nagar, Indore',
+        role: "Full Stack Developer",
+        company: "Gammastack",
+        year: "Jan 2023 - Present",
+        address: "Crystal IT Park, Indore, Madhya Pradesh",
         points: [
             {
-                title: 'Front-End Development',
-                decription: 'Designed and developed responsive web interfaces using React.js, ensuring smooth performance across various devices and browsers.'
+                title: "Application Development",
+                decription:
+                    "Led development of 2+ production React applications with scalable frontend architecture and improved UX."
             },
             {
-                title: 'Collaboration & Optimization',
-                decription: 'Worked closely with cross-functional teams to integrate designs with back-end functionality, optimizing code for performance and scalability.'
+                title: "Performance Optimization",
+                decription:
+                    "Improved performance by ~40% using code splitting, lazy loading, memory management and optimized re-rendering."
             },
             {
-                title: 'Lead Web Designer',
-                decription: 'Led the design team in creating visually appealing and user-centric websites, ensuring brand consistency and adherence to design principles.'
+                title: "Real-Time Features",
+                decription:
+                    "Implemented real-time updates using Socket.IO, reducing API calls by ~60% and improving responsiveness."
+            },
+            {
+                title: "Platform Development",
+                decription:
+                    "Contributed to casino gaming platform with 50+ features including real-time betting workflows."
+            },
+            {
+                title: "Payment Integration",
+                decription:
+                    "Integrated Stripe, PayPal and Skrill for secure and reliable transactions."
+            },
+            {
+                title: "Team Collaboration",
+                decription:
+                    "Mentored juniors, participated in code reviews and worked in Agile environment using Git workflows."
             }
         ]
     },
     {
-        role: 'ReactJs Developer',
-        company: 'Gammastack',
-        year: '2022-Present',
-        address: 'Crystal IT Park, Indore',
+        role: "Front End Developer",
+        company: "Codes for Tomorrow",
+        year: "Jan 2022 - Dec 2023",
+        address: "Indore, Madhya Pradesh",
         points: [
             {
-                title: 'Component Development',
-                decription: 'Build and maintain reusable, efficient React components to support scalable and dynamic web applications.'
+                title: "Frontend Development",
+                decription:
+                    "Built scalable React applications with reusable components and modular UI architecture."
             },
             {
-                title: 'State Management',
-                decription: 'Implement effective state management solutions (using tools like Redux or Context API) to handle complex application workflows and data flows.'
+                title: "Responsive Design",
+                decription:
+                    "Implemented responsive UI using Flexbox and Grid for consistent cross-device experience."
             },
             {
-                title: 'Performance Optimization',
-                decription: 'Ensure application performance by optimizing components, improving load times, and reducing bundle sizes for a seamless user experience.'
+                title: "Real-Time UI",
+                decription:
+                    "Developed live notifications and status updates using WebSockets / Socket.IO."
+            },
+            {
+                title: "Code Quality",
+                decription:
+                    "Followed best practices using ESLint, Prettier and reusable UI patterns."
             }
         ]
-    },
-]
+    }
+];
+
 const projectArray = [
     {
-        name: 'Dinocasino',
-        duration: 'Jan,2024 - Present',
+        name: "Dino Gaming Platform",
+        duration: "2024 - Present",
         points: [
             {
-                title: 'UI/UX Overhaul',
-                decription: 'Designed and implemented a sleek, responsive user interface for both sports and casino betting, enhancing the overall user experience and increasing engagement.'
+                title: "High Scale Platform",
+                decription:
+                    "Architected betting & fantasy platform serving 4,000+ daily users with 99.9% uptime."
             },
             {
-                title: 'Real-Time Data Integration',
-                decription: 'Integrated real-time sports betting odds and casino updates using WebSockets and APIs, ensuring seamless live updates for users.'
+                title: "Real-Time Systems",
+                decription:
+                    "Built real-time odds & betting events using WebSockets handling 5,000+ concurrent connections."
             },
             {
-                title: 'Component Reusability',
-                decription: 'Developed a modular component structure, enabling efficient code reusability and faster feature deployment across different betting functionalities.'
+                title: "Performance",
+                decription:
+                    "Reduced API latency by 60% and platform latency by 40% using caching and optimization."
+            },
+            {
+                title: "User Engagement",
+                decription:
+                    "Improved engagement by 35% through UI responsiveness and UX improvements."
             }
         ]
     },
     {
-        name: 'Salon',
-        duration: 'Jan,2023 - Dec 2023',
+        name: "Stream DFS – Fantasy Sports",
+        duration: "2023 - 2024",
         points: [
             {
-                title: 'User Interface Design',
-                decription: 'Developed and optimized a responsive and intuitive user interface for users, vendors, and admins to manage salon appointments efficiently across devices.'
+                title: "Real-Time Platform",
+                decription:
+                    "Built fantasy sports platform with live scoring and leaderboards."
             },
             {
-                title: 'Feature Implementation',
-                decription: 'Led the front-end development for key features, including appointment booking, real-time notifications, vendor management, and admin dashboards.'
+                title: "Scalability",
+                decription:
+                    "Handled 4,000+ concurrent users using Redis caching and optimized state."
             },
             {
-                title: 'Collaboration & Scalability',
-                decription: 'Coordinated with back-end teams to ensure seamless integration of APIs while optimizing the front-end for performance, scalability, and user experience.'
+                title: "Complex Logic",
+                decription:
+                    "Implemented fantasy scoring rules and live rankings with high accuracy."
+            },
+            {
+                title: "Architecture",
+                decription:
+                    "Designed reusable components improving feature delivery speed by 45%."
             }
         ]
     },
     {
-        name: 'Navkar Lottery',
-        duration: 'Jan,2022 - Dec 2023',
+        name: "Salon Marketplace",
+        duration: "2023",
         points: [
             {
-                title: 'Lead UI Designer',
-                decription: 'Designed and implemented a user-friendly, interactive interface for the lottery platform, ensuring a seamless and engaging gaming experience.'
+                title: "Full Stack System",
+                decription:
+                    "Built appointment platform serving 10+ salons and 1,000+ users."
             },
             {
-                title: 'Real-Time Game Integration',
-                decription: 'Developed real-time features for live lottery draws and game participation, enhancing user engagement and platform responsiveness.'
+                title: "RBAC",
+                decription:
+                    "Implemented role-based dashboards and permission system."
             },
-
+            {
+                title: "Automation",
+                decription:
+                    "Reduced missed appointments by 70% using notifications and reminders."
+            },
+            {
+                title: "APIs",
+                decription:
+                    "Designed REST APIs handling 200+ requests/min with 99.5% reliability."
+            }
         ]
     },
+    {
+        name: "Online Lottery Platform",
+        duration: "2022 - 2023",
+        points: [
+            {
+                title: "Secure Platform",
+                decription:
+                    "Developed secure lottery system with ticketing and automated draws."
+            },
+            {
+                title: "Real-Time Updates",
+                decription:
+                    "Implemented live results and winner notifications using WebSockets."
+            },
+            {
+                title: "Wallet System",
+                decription:
+                    "Built wallet and transaction workflows with audit-safe tracking."
+            },
+            {
+                title: "Background Jobs",
+                decription:
+                    "Created scheduled jobs for draws, payouts and settlements."
+            }
+        ]
+    }
+];
 
-]
 const Resume = () => {
-  
-    const returnDot = () => {
-        return <div className='w-5 h-5 absolute bg-white dark:bg-black z-[2] ax-center top-[4px] lg:top-[7px] rounded-full border-2 border-cyan-500 dark:border-yellow-500'></div>
-    }
-    const renderLine = () => {
-        return <div className='ax-center line  h-full w-[2px] z-[1] bg-cyan-500 dark:bg-yellow-500 top-[7px]'></div>
-    }
-    useLayoutEffect(()=>{
-        let tl = gsap.timeline({
+    useLayoutEffect(() => {
+        gsap.from(".resume-card", {
+            opacity: 0,
+            y: 50,
+            stagger: 0.15,
+            duration: 0.8,
+            ease: "power3.out",
             scrollTrigger: {
-                trigger: '.line',
-                // pin: true, 
-                start: 'top 20%',
-                end: 'bottom bottom', 
-                anticipatePin: 1,
-                pinSpacing: false,
-                invalidateOnRefresh: true,
-                scrub: 1, 
-
-              
+                trigger: ".resume-section",
+                start: "top 80%",
             }
         });
-        tl.fromTo('.line', { height:0 },{height:'100%'})
-    },[])
+    }, []);
 
     return (
-        <div className='section-wrapper resume'>
+        <section className="section-wrapper resume-section">
             <header>
-                <Heading title={'Resume'} />
+                <Heading title="Resume" />
             </header>
-            <div className=" py-8">
-                <ul className='grid grid-cols-1 lg:grid-cols-2 gap-x-20 gap-8'>
-                    <div>
-                        <h3 className="lg:text-2xl text-lg font-semibold  mb-4 ">Studies & Professional Experience</h3>
-                        <div className='relative'>
-                            {renderLine()}
-                            {studiesArray?.map((item) => {
-                                return <li key={item.company} className='flex items-stretch gap-4 lg:gap-8 '>
-                                    <div className='relative  flex-shrink-0'>
-                                        {returnDot()}
 
-                                    </div>
-                                    <div className=''>
-                                        <h4 className='lg:heading-4 heading-6'>{item?.role}</h4>
-                                        <h6 className='opacity-80 text-lg mb-1'>{item?.schooling}</h6>
-                                        <div className= 'dark:bg-zinc-700 bg-gray-300 px-4 py-1 inline-block font-semibold mb-1'  >{item?.year}</div>
-                                        <p className={`italic text-muted pb-12  `}>{item?.address}</p>
+            <div className="grid lg:grid-cols-2 gap-10 py-8">
 
-                                    </div>
+                {/* EXPERIENCE */}
+                <div>
+                    <h3 className="text-xl font-semibold mb-6 text-sky-600 dark:text-yellow-400">
+                        Work History
+                    </h3>
 
-                                </li>
-                            })}
-                            {experienceArray?.map((item, mainIndex) => {
-                                return <li key={item.company} className='flex items-stretch gap-4 lg:gap-8 '>
-                                    <div className='relative  flex-shrink-0'>
-                                        {returnDot()}
+                    <div className="space-y-6">
+                        {experienceArray.map((item) => (
+                            <div key={item.company} className="resume-card p-6 rounded-xl bg-zinc-100 dark:bg-zinc-800 shadow-md border-l-4 border-sky-500 dark:border-yellow-500">
+                                <h4 className="text-lg font-bold">{item.role}</h4>
+                                <p className="opacity-80">{item.company}</p>
+                                <div className="text-sm font-semibold my-1 inline-block bg-zinc-300 dark:bg-zinc-700 px-3 py-1 rounded">
+                                    {item.year}
+                                </div>
+                                <p className="italic text-sm mb-3">{item.address}</p>
 
-                                    </div>
-                                    <div className=''>
-                                        <h4 className='lg:heading-4 heading-6'>{item?.role}</h4>
-                                        <h6 className='opacity-80 text-lg mb-1'>{item?.company}</h6>
-                                        <div className= 'dark:bg-zinc-700 bg-gray-300 px-4 py-1 inline-block font-semibold mb-1'  >{item?.year}</div>
-                                        <p className='italic text-muted'>{item?.address}</p>
-                                        <ul className={`space-y-2 py-4  ${mainIndex === experienceArray.length - 1 ? 'pb-0' : 'pb-12'}`}>
-                                            {item.points?.map((point, innerIndex) => (
-                                                <li className='' key={innerIndex}>
-                                                    <span className='font-medium flex-shrink-0 text-lg'>
-                                                        {point.title} :
-                                                    </span>
-                                                    <span className='ml-2 text-muted'>
-                                                        {point.decription}
-                                                    </span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-
-                                </li>
-                            })}
-                        </div>
+                                <ul className="list-disc list-inside space-y-2">
+                                    {item.points.map((point, i) => (
+                                        <li key={i}>
+                                            <span className="font-medium">{point.title}:</span>{" "}
+                                            <span className="opacity-80">{point.decription}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
                     </div>
-                    <div>
-                        <h3 className="lg:text-2xl text-lg font-semibold  mb-4 ">Projects</h3>
-                        <div className='relative'>
-                            {renderLine()}
+                </div>
 
-                            {projectArray?.map((item, mainIndex) => {
-                                return <li key={item.company} className='flex items-stretch gap-4 lg:gap-8 '>
-                                    <div className='relative  flex-shrink-0'>
-                                        {returnDot()}
+                {/* PROJECTS */}
+                <div>
+                    <h3 className="text-xl font-semibold mb-6 text-sky-600 dark:text-yellow-400">
+                        Key Projects
+                    </h3>
 
-                                    </div>
-                                    <div className=''>
-                                        <h4 className='heading-4 mb-1'>{item?.name}</h4>
-                                        <div className= 'dark:bg-zinc-700 bg-gray-300 px-4 py-1 inline-block font-semibold mb-1'  >{item?.duration}</div>
-                                        <ul className={`space-y-2 py-4  ${mainIndex === projectArray.length - 1 ? 'pb-0' : 'pb-12'}`}>
-                                            {item.points?.map((point, innerIndex) => (
-                                                <li className='' key={innerIndex}>
-                                                    <span className='font-medium flex-shrink-0 text-lg'>
-                                                        {point.title} :
-                                                    </span>
-                                                    <span className='ml-2 text-muted'>
-                                                        {point.decription}
-                                                    </span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
+                    <div className="space-y-6">
+                        {projectArray.map((item) => (
+                            <div key={item.name} className="resume-card p-6 rounded-xl bg-zinc-100 dark:bg-zinc-800 shadow-md border-l-4 border-purple-500 dark:border-pink-500">
+                                <h4 className="text-lg font-bold">{item.name}</h4>
+                                <div className="text-sm font-semibold my-1 inline-block bg-zinc-300 dark:bg-zinc-700 px-3 py-1 rounded">
+                                    {item.duration}
+                                </div>
 
-                                </li>
-                            })}
-                        </div>
+                                <ul className="list-disc list-inside space-y-2 mt-3">
+                                    {item.points.map((point, i) => (
+                                        <li key={i}>
+                                            <span className="font-medium">{point.title}:</span>{" "}
+                                            <span className="opacity-80">{point.decription}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
                     </div>
+                </div>
 
-
-                </ul>
             </div>
-        </div>
-    )
-}
+        </section>
+    );
+};
 
-export default Resume
+export default Resume;
