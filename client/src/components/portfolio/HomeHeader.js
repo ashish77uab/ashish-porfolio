@@ -208,9 +208,8 @@ const HomeHeader = () => {
             ref={containerRef}
             style={{
                 backgroundImage: "url('/images/react-bg.png')",
-                transform: `translate(${mousePosition.x * 0.5}px, ${mousePosition.y * 0.5}px)`
             }}
-            className='h-screen bg-no-repeat bg-cover bg-center relative overflow-hidden'
+            className='h-screen bg-no-repeat bg-cover bg-left-top md:bg-center relative overflow-hidden'
         >
             {/* Animated gradient overlay */}
             <div className='absolute inset-0 bg-gradient-to-br from-purple-900/40 via-black/60 to-blue-900/40 animate-gradient-xy'></div>
