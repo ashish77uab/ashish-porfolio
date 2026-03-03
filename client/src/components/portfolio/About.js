@@ -30,7 +30,7 @@ const About = () => {
         <section ref={sectionRef} className="section-wrapper relative overflow-hidden">
             <header>
                 <Heading title="About" />
-                <p className="mt-4 text-muted lg:text-lg max-w-4xl leading-relaxed">
+                <p className="mt-4 text-muted lg:text-lg  leading-relaxed">
                     Accomplished Full Stack Developer with{" "}
                     <b>{yearsOfExperience.toFixed(1)} years</b> of experience specializing
                     in React and Node.js–based applications. Proven track record of building
@@ -42,7 +42,7 @@ const About = () => {
 
             <div className="flex lg:flex-row flex-col gap-10 py-10 relative z-10">
                 {/* IMAGE */}
-                <div className="lg:w-[380px] md:w-[500px] w-full flex-shrink-0 about-img">
+                <div className="lg:w-[480px] md:w-[500px] w-full flex-shrink-0 about-img">
                     <img
                         src="/images/ashish-white.png"
                         alt="Ashish Patel"

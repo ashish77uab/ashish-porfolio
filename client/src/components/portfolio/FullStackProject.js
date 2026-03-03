@@ -97,7 +97,7 @@ const FullStackProject = () => {
     return (
         <section ref={sectionRef} className="section-wrapper">
             <header>
-                <Heading title={"Full Stack Projects (Self)"} />
+                <Heading title={"My Own Projects"} />
             </header>
 
             <div className="py-8">
