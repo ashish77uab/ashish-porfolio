@@ -199,7 +199,7 @@ const Resume = () => {
     return (
         <section className="section-wrapper resume-section">
             <header>
-                <Heading title="Resume" />
+                <Heading title="Work History" />
             </header>
 
             <div className="grid lg:grid-cols-2 gap-10 py-8">
@@ -207,7 +207,7 @@ const Resume = () => {
                 {/* EXPERIENCE */}
                 <div>
                     <h3 className="text-xl font-semibold mb-6 text-sky-600 dark:text-yellow-400">
-                        Work History
+                        Experience
                     </h3>
 
                     <div className="space-y-6">
